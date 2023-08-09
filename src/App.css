@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--tg-theme-bg-color); /*после подключени к тг механизму!!!*/
+  color: var(--tg-theme-text-color);
+}
