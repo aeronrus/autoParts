@@ -10,21 +10,23 @@ const Form = () => {
   const { tg } = useTelegram(); //объект для работы с тлг
 
   const onSendData = useCallback(() => {
-    const data = {
+    const params = {
       part,
       number,
       account,
       subject,
     };
-    tg.sendData(JSON.stringify(data)); //с помощью sendData можем взаимодействовать с нашим ботом, но метод только для keyboard-кнопок, а не для inline_keyboard
-  }, [part, street, subject]);
+    tg.sendData(JSON.stringify(params));
+  }, [part, number, account, subject]);
 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', onSendData);
+
     return () => {
       tg.offEvent('mainButtonClicked', onSendData);
     };
-  }, [onSendData]);
+  }, []); //клик по кнопке(слева поля ввода)=>срабатывает useEffect=>выполняется onSendData
+  //onSendData переписывается
 
   useEffect(() => {
     tg.MainButton.setParams({
@@ -39,7 +41,7 @@ const Form = () => {
     } else {
       tg.MainButton.show();
     }
-  }, [part, street]);
+  }, [part, number, account]);
 
   const onChangePart = (e) => {
     setPart(e.target.value);
