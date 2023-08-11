@@ -16,14 +16,14 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/form" element={<Form />}></Route>
-        <Route path="/products" element={<ProductList />}></Route>
+        <Route path="form" element={<Form />}></Route>
+        <Route path="/" element={<ProductList />}></Route>
       </Routes>
-      <button onClick={onToggleButton}>toggle</button>//при нажатии на кнопку будет появлятьс или
-      исчезать mainbutton-основная кнопка взаимодействия с ботом
+      <button onClick={onToggleButton}>toggle</button>
       <button onClick={handleClose}>Закрыть</button>
     </div>
   );
 }
+//при нажатии на кнопку будет появлятьс или исчезать mainbutton-основная кнопка взаимодействия с ботом
 
 export default App;
