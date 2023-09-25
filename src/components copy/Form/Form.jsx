@@ -25,7 +25,7 @@ const Form = () => {
     return () => {
       tg.offEvent('mainButtonClicked', onSendData);
     };
-  }, []); //клик по кнопке(слева поля ввода)=>срабатывает useEffect=>выполняется onSendData
+  }, [onSendData]); //клик по кнопке(слева поля ввода)=>срабатывает useEffect=>выполняется onSendData
   //onSendData переписывается
 
   useEffect(() => {
@@ -55,6 +55,7 @@ const Form = () => {
 
   const onChangeSubject = (e) => {
     setSubject(e.target.value);
+    console.log(subject);
   };
 
   return (

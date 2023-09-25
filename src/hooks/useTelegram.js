@@ -1,4 +1,4 @@
-const tg = window.Telegram.WebApp; //начала надо установить!!!
+const tg = window.Telegram.WebApp; //cначала надо установить!!!
 
 export function useTelegram() {
   const handleClose = () => {
@@ -17,5 +17,6 @@ export function useTelegram() {
     onToggleButton,
     tg,
     user: tg.initDataUnsafe?.user,
+    queryId: tg.initDataUnsafe?.query_id, //получаем query_Id для отправки на бэкэнд и обмена информацией
   };
 }

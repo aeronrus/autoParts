@@ -7,9 +7,19 @@ import { Routes, Route, Link } from 'react-router-dom';
 import ProductList from './components copy/ProductList/ProductList';
 
 function App() {
+  const func = (arr) => {
+    for (i = 0; i < arr.length; i++) {
+      for (j = 0; j < arr.length; j++) {
+        str = 'Элемент' + arr[j];
+        return str;
+      }
+    }
+  };
+
   const { tg, onToggleButton, handleClose } = useTelegram();
   useEffect(() => {
     tg.ready(); //метод сообщает, что приложение проинициализировалось и его можно отрисовывать
+    console.log(func([1, 2]));
   }, []);
 
   return (

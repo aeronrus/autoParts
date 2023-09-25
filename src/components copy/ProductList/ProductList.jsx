@@ -26,7 +26,9 @@ const ProductList = () => {
   const { tg, queryId } = useTelegram();
 
   const onSendData = useCallback(() => {
+    //нажали купить=>отправили запрос на сервер
     const data = {
+      //все через useCallback, чтобы не тратить память
       products: addedItems,
       totalPrice: getTotalPrice(addedItems),
       queryId,
@@ -38,7 +40,7 @@ const ProductList = () => {
       },
       body: JSON.stringify(data),
     });
-  }, [addedItems]);
+  }, [addedItems]); //обновляем(пересоздаем, но НЕ ВЫЗЫВАЕМ функцию только при изменении списка добавленных продуктов)
 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', onSendData);
@@ -64,7 +66,8 @@ const ProductList = () => {
     } else {
       tg.MainButton.show();
       tg.MainButton.setParams({
-        text: `Купить ${getTotalPrice(newItems)}`,
+        //меняем кнопку на купить, если корзина не пустая
+        text: `Купить ${getTotalPrice(newItems)}`, //показываем на кнопке общую стоимость товара
       });
     }
   };
